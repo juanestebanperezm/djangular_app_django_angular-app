@@ -1,0 +1,60 @@
+<button type="button" class="btn btn-primary float-right m-2" 
+data-toggle="modal" data-target="#exampleModal"
+(click)="addClick()"
+data-backdrop="static" data-keyboard="false"
+>
+    Add Department
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+          <button type="button" class="close" 
+          data-dismiss="modal" aria-label="Close"
+          (click)="closeClick()" >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <app-updatedeparment [dep]="dep" *ngIf="ActivateAddEditDepComp">
+            </app-updatedeparment>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id del departamento</th>
+            <th>Nombre del departamento</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let x of deparmentList">
+            <td>{{x.DeparmentId}}</td>
+            <td>{{x.DeparmentName}}</td>
+            <td>
+                <button class="btn btn-primary"
+                data-toggle="modal" data-target="#exampleModal"
+                    (click)="editClick(x)"
+                data-backdrop="static" data-keyboard="false"
+
+                >Editar</button>
+                <button class="btn btn-danger" (click)="deleteClick(x)">Eliminar</button>
+            </td>
+
+        </tr>
+    </tbody>
+
+</table>
